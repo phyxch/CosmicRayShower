@@ -1,0 +1,7 @@
+May 20, 2010, Hexc, Kanishka
+This is a project for simulating cosmic ray shower in the atmosphere.
+
+1) We divide the atmosphere into multiple layers with variable air density following a NASA model 
+
+2) The world volume and each layer are cylindrical volumes constructed by G4Tub
+
