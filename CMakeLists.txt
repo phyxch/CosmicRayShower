@@ -41,12 +41,17 @@ target_link_libraries(MuELoss ${Geant4_LIBRARIES})
 # build B4c. This is so that we can run the executable directly because it
 # relies on these scripts being in the current working directory.
 #
-set(EXAMPLEB4D_SCRIPTS 
+set(MUELOSS_SCRIPTS 
   init_vis.mac
   vis.mac
+  visMuonOnly.mac
+  visElectronPositronOnly.mac
+  visNeutronOnly.mac
+  visNoGamma.mac
+  visGammaOnly.mac
   )
 
-foreach(_script ${EXAMPLEB4D_SCRIPTS})
+foreach(_script ${MUELOSS_SCRIPTS})
   configure_file(
     ${PROJECT_SOURCE_DIR}/${_script}
     ${PROJECT_BINARY_DIR}/${_script}
