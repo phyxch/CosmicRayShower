@@ -1,4 +1,6 @@
 // Created on May 12, 2010, Hexc, Kanishka
+// Jan 19, 2025, hexc. A code cleanng up was done.
+//
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -50,7 +52,6 @@ void MuELossEventAction::BeginOfEventAction(const G4Event* evt)
   
   if (evtNb%printModulo == 0) { 
     G4cout << "\n---> Begin of event: " << evtNb << G4endl;
-    //    CLHEP::HepRandom::showEngineStatus();
   }
 
   G4String colName;
@@ -128,8 +129,6 @@ void MuELossEventAction::EndOfEventAction(const G4Event* evt)
   //
   runAct->fillPerEvent(TotalEnergyDeposit, TotalTrackLength);  
   
-  G4cout << " End Of Event in MuELossEventAction. " << G4endl;
-
   // Collect information of particle hits in the near earth surface scintillator
   G4HCofThisEvent* HCE = evt->GetHCofThisEvent();
 
@@ -150,6 +149,8 @@ void MuELossEventAction::EndOfEventAction(const G4Event* evt)
 
   fileOut->fout << "Number of hits seen in the near surface scintillator: " <<
     nhitNearEarthSurface << G4endl;
+
+  G4cout << " End Of Event in MuELossEventAction. " << G4endl;
 
 }  
 

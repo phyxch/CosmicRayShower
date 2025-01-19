@@ -4,6 +4,7 @@
 // Updated on 10/31/2014, Hexc - fixing and cleaning up the code for compilation under Mac 
 // Updated on 11/8/2014, Hexc - fixed a bug of character array : layer
 // Updated on 11/29/2022, Hexc - fixing a sensitive detector isse
+// Updated on 1/14/2025, hexc & Mia Boyd - Disable the visualization of the atm layers. 
 //
 
 #include "MuELossDetectorConstruction.hh"
@@ -278,11 +279,10 @@ G4VPhysicalVolume* MuELossDetectorConstruction::Construct()
   
   for (int iLayer = 0; iLayer < NbOfLayers; iLayer++)
     {
-
       //   simpleLayerVisAtt[iLayer] = new G4VisAttributes(G4Colour(1.0/(iLayer+1),1.0/(iLayer+1),1.0/(iLayer+1)));
       simpleLayerVisAtt[iLayer] = new G4VisAttributes(G4Colour(0.1, 0.1, (0.2 + 0.01*iLayer)));
       //simpleLayerVisAtt[iLayer] = new G4VisAttributes(G4Colour::Yellow);
-      simpleLayerVisAtt[iLayer]->SetVisibility(true);//********************************turn off visulizition
+      simpleLayerVisAtt[iLayer]->SetVisibility(false);//********************************turn off visulizition
       simpleLayerVisAtt[iLayer]->SetForceSolid(false);
       simpleLayerVisAtt[iLayer]->SetForceWireframe(false);
       (airLayer_logic[iLayer])->SetVisAttributes(simpleLayerVisAtt[iLayer]);

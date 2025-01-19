@@ -1,0 +1,47 @@
+#
+# Sets some default verbose
+#
+/control/verbose 2
+/control/saveHistory
+/run/verbose 2
+#
+# create empty scene
+#
+/vis/scene/create
+#
+# Use this open statement instead for OpenGL in immediate mode.
+#/vis/open OGLIX
+/vis/open OGLI
+#
+# Output an empty detector
+/vis/viewer/flush
+#
+/vis/scene/add/trajectories rich
+#/vis/scene/add/trajectories charged
+#/vis/modeling/trajectories/create/drawByCharge
+# Draw trajectories at end of event, showing trajectory points as
+# markers of size 2 pixels
+#/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+#/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+# (if too many tracks cause core dump => /tracking/storeTrajectory 0)
+#
+# To draw e+/e- only
+/vis/filtering/trajectories/create/particleFilter
+/vis/filtering/trajectories/particleFilter-0/add e-
+/vis/filtering/trajectories/particleFilter-0/add e+
+#
+# To draw charged particles only
+#/vis/filtering/trajectories/particleFilter-0/invert true
+#
+# Many other options available with /vis/modeling and /vis/filtering.
+# For example, select colour by particle ID
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/set e- red
+/vis/modeling/trajectories/drawByParticleID-0/set e+ blue
+##/vis/modeling/trajectories/drawByParticleID-0/set gamma green
+#/vis/modeling/trajectories/drawByParticleID-0/set neutron yellow
+#/vis/modeling/trajectories/drawByParticleID-0/set mu+ cyan
+#/vis/modeling/trajectories/drawByParticleID-0/set mu- magenta
+#
+/vis/scene/endOfEventAction accumulate
+#
